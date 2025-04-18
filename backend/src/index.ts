@@ -1,11 +1,15 @@
 import express from "express";
 
+import routes from "./routes";
+import { startMongoDB } from "./db/mongodb";
+
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
-  res.send("Express Server");
-});
+app.use(express.json());
+app.use("/api", routes)
+
+startMongoDB();
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
