@@ -12,12 +12,10 @@ export const getRawLemmasFromText = (text: string): RawLemma[] => {
     return terms
       .filter((term) => !stopList.includes(term.normal))
       .map((term) => {
-        let lemma = term.normal;
-        if (term.tags?.has("Verb")) {
-          lemma = nlp(term.normal).verbs().toInfinitive().out("text");
-        } else if (term.tags?.has("Noun")) {
-          lemma = nlp(term.normal).nouns().toSingular().out("text");
-        }
+        const lemma =
+          nlp(term.normal).verbs().toInfinitive().out("text") ||
+          nlp(term.normal).nouns().toSingular().out("text") ||
+          term.normal;
 
         return {
           original: term.text,

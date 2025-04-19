@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Lemma Processing Service getRawLemmasFromText should extract raw lemmas from capitalization 1`] = `
+[
+  {
+    "original": "WALK",
+    "value": "walk",
+  },
+  {
+    "original": "walk",
+    "value": "walk",
+  },
+  {
+    "original": "Walk",
+    "value": "walk",
+  },
+]
+`;
+
+exports[`Lemma Processing Service getRawLemmasFromText should extract raw lemmas from empty string 1`] = `[]`;
+
+exports[`Lemma Processing Service getRawLemmasFromText should extract raw lemmas from mixed parts of speech 1`] = `
+[
+  {
+    "original": "quick",
+    "value": "quick",
+  },
+  {
+    "original": "brown",
+    "value": "brown",
+  },
+  {
+    "original": "fox",
+    "value": "fox",
+  },
+  {
+    "original": "jumps",
+    "value": "jump",
+  },
+  {
+    "original": "lazy",
+    "value": "lazy",
+  },
+  {
+    "original": "dog",
+    "value": "dog",
+  },
+]
+`;
+
+exports[`Lemma Processing Service getRawLemmasFromText should extract raw lemmas from only stopwords 1`] = `[]`;
+
+exports[`Lemma Processing Service getRawLemmasFromText should extract raw lemmas from repeated words 1`] = `
+[
+  {
+    "original": "Cats",
+    "value": "cat",
+  },
+  {
+    "original": "cats",
+    "value": "cat",
+  },
+  {
+    "original": "cats",
+    "value": "cat",
+  },
+]
+`;
+
+exports[`Lemma Processing Service getRawLemmasFromText should extract raw lemmas from simple nouns 1`] = `
+[
+  {
+    "original": "Cats",
+    "value": "cat",
+  },
+  {
+    "original": "animals",
+    "value": "animal",
+  },
+]
+`;
+
+exports[`Lemma Processing Service getRawLemmasFromText should extract raw lemmas from verbs in different forms 1`] = `
+[
+  {
+    "original": "played",
+    "value": "play",
+  },
+  {
+    "original": "playing",
+    "value": "play",
+  },
+  {
+    "original": "football",
+    "value": "football",
+  },
+]
+`;
+
+exports[`Lemma Processing Service matchLemmas should match raw lemmas with known lemmas 1`] = `
+[
+  {
+    "addedAt": 2025-04-19T00:00:00.000Z,
+    "known": true,
+    "original": "Cats",
+    "translations": [
+      "кот",
+    ],
+    "value": "cat",
+  },
+  {
+    "addedAt": 2025-04-19T00:00:00.000Z,
+    "known": true,
+    "original": "animals",
+    "translations": [
+      "животное",
+    ],
+    "value": "animal",
+  },
+  {
+    "addedAt": undefined,
+    "known": false,
+    "original": "played",
+    "translations": undefined,
+    "value": "play",
+  },
+]
+`;
