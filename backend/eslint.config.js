@@ -1,12 +1,13 @@
 import globals from "globals";
 import js from "@eslint/js";
 import tseslint from "typescript-eslint";
-import prettier from "eslint-config-prettier";
+import eslintConfigPrettier from "eslint-config-prettier/flat";
 import pluginJest from "eslint-plugin-jest";
 
 export default [
   js.configs.recommended,
   ...tseslint.configs.recommended,
+  eslintConfigPrettier,
   {
     files: ["src/**/*.ts", "tests/**/*.ts"],
     languageOptions: {
@@ -39,11 +40,6 @@ export default [
       "jest/no-identical-title": "error",
       "jest/prefer-to-have-length": "warn",
       "jest/valid-expect": "error",
-    },
-  },
-  {
-    rules: {
-      ...prettier.rules,
     },
   },
 ];
