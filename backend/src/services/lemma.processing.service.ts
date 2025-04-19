@@ -10,8 +10,8 @@ export const getRawLemmasFromText = (text: string): RawLemma[] => {
     const terms = doc.termList();
 
     return terms
-      .filter((term) => !stopList.includes(term.normal))
-      .map((term) => {
+      .filter(term => !stopList.includes(term.normal))
+      .map(term => {
         const lemma =
           nlp(term.normal).verbs().toInfinitive().out("text") ||
           nlp(term.normal).nouns().toSingular().out("text") ||
@@ -23,20 +23,16 @@ export const getRawLemmasFromText = (text: string): RawLemma[] => {
         };
       });
   } catch (error) {
+    console.error(error);
     throw new Error("Failed to extract lemmas from text.");
   }
 };
 
-export const matchLemmas = (
-  rawLemmas: RawLemma[],
-  knownLemmas: ILemmaModel[]
-): MatchedLemma[] => {
+export const matchLemmas = (rawLemmas: RawLemma[], knownLemmas: ILemmaModel[]): MatchedLemma[] => {
   try {
-    const knownLemmasMap = new Map(
-      knownLemmas.map((lemma) => [lemma.value, lemma])
-    );
+    const knownLemmasMap = new Map(knownLemmas.map(lemma => [lemma.value, lemma]));
 
-    return rawLemmas.map((rawLemma) => {
+    return rawLemmas.map(rawLemma => {
       const known = knownLemmasMap.get(rawLemma.value);
       return {
         ...rawLemma,
@@ -46,6 +42,7 @@ export const matchLemmas = (
       };
     });
   } catch (error) {
+    console.error(error);
     throw new Error("Failed to match lemmas.");
   }
 };
