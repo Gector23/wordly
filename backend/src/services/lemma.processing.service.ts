@@ -1,8 +1,8 @@
 import nlp from "compromise";
 import { eng as stopList } from "stopword";
 
-import { type ILemmaModel } from "../models/lemma.model";
-import { type MatchedLemma, type RawLemma } from "../types/lemma.types";
+import { type ILemmaModel } from "#models/lemma.model";
+import { type MatchedLemma, type RawLemma } from "#types/lemma.types";
 
 export const getRawLemmasFromText = (text: string): RawLemma[] => {
   try {

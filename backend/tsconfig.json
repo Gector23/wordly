@@ -4,10 +4,20 @@
     "module": "CommonJS",
     "outDir": "./dist",
     "rootDir": "./",
+    "baseUrl": "./",
+    "paths": {
+      "#*": ["./src/*"],
+      "#controllers/*": ["./src/controllers/*"],
+      "#services/*": ["./src/services/*"],
+      "#routes/*": ["./src/routes/*"],
+      "#models/*": ["./src/models/*"],
+      "#types/*": ["./src/types/*"]
+    },
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
+    "resolveJsonModule": true
   },
   "include": ["src", "tests"],
   "exclude": ["node_modules", "dist"]

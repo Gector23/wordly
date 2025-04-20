@@ -1,6 +1,6 @@
 import { describe, expect, it } from "@jest/globals";
 
-import { getRawLemmasFromText, matchLemmas } from "../../src/services/lemma.processing.service";
+import { getRawLemmasFromText, matchLemmas } from "#services/lemma.processing.service";
 
 describe("Lemma Processing Service", () => {
   describe("getRawLemmasFromText", () => {

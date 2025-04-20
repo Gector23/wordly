@@ -8,7 +8,7 @@
     "npm": "10"
   },
   "scripts": {
-    "build": "tsc --project tsconfig.build.json",
+    "build": "tsc --project tsconfig.build.json && tsc-alias --project tsconfig.build.json",
     "start": "node dist/src/index.js",
     "dev": "nodemon",
     "test": "jest",
@@ -30,6 +30,7 @@
     "@types/stopword": "^2.0.3",
     "eslint": "^9.25.0",
     "eslint-config-prettier": "^10.1.2",
+    "eslint-import-resolver-typescript": "^4.3.3",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jest": "^28.11.0",
     "globals": "^16.0.0",
@@ -38,6 +39,8 @@
     "prettier": "^3.5.3",
     "ts-jest": "^29.3.2",
     "ts-node": "^10.9.2",
+    "tsc-alias": "^1.8.15",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.30.1"
   }

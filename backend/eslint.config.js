@@ -23,7 +23,26 @@ export default [
         ...globals.es2021,
       },
     },
+    settings: {
+      "import/resolver": {
+        typescript: {
+          alwaysTryTypes: true,
+          project: "./tsconfig.json",
+        },
+      },
+    },
     rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            {
+              group: ["../*"],
+              message: "Use alias imports (starting with #) instead of relative paths.",
+            },
+          ],
+        },
+      ],
       "@typescript-eslint/consistent-type-imports": [
         "error",
         {
