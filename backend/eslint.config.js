@@ -51,9 +51,6 @@ export default [
   {
     files: ["tests/**/*.test.ts"],
     languageOptions: {
-      parserOptions: {
-        project: "./tsconfig.test.json",
-      },
       globals: {
         ...globals.jest,
       },
