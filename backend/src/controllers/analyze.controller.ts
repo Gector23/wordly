@@ -1,8 +1,8 @@
-import { Request, Response } from "express";
+import { type Request, type Response } from "express";
 import { StatusCodes } from "http-status-codes";
 
-import { getRawLemmasFromText, matchLemmas } from "../services/lemma.processing.service";
 import { loadLemmas } from "../services/lemma.load.services";
+import { getRawLemmasFromText, matchLemmas } from "../services/lemma.processing.service";
 
 export const analyzeText = async (req: Request, res: Response) => {
   const text = req.body.text;

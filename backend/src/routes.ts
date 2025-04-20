@@ -1,4 +1,5 @@
 import express from "express";
+
 import analyzeRoute from "./routes/analyze.route";
 
 const router = express.Router();

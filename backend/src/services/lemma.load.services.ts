@@ -1,6 +1,5 @@
 import Word from "../models/lemma.model";
-
-import { RawLemma } from "../types/lemma.types";
+import { type RawLemma } from "../types/lemma.types";
 
 export const loadLemmas = async (rawLemmas: RawLemma[]) => {
   try {
