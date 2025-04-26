@@ -1,6 +1,10 @@
+import Analyze from "./components/Analyze";
+
 function App() {
   return (
-    <div>App</div>
+    <main className="max-w-7xl mx-auto px-8 py-16">
+      <Analyze />
+    </main>
   );
 }
 

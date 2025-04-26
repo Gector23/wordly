@@ -11,5 +11,5 @@ export const analyzeText = async (req: Request, res: Response) => {
   const knownLemmas = await loadLemmas(rawLemmas);
   const matchedLemmas = matchLemmas(rawLemmas, knownLemmas);
 
-  res.status(StatusCodes.OK).json(matchedLemmas);
+  res.status(StatusCodes.OK).json({ matchedLemmas });
 };
