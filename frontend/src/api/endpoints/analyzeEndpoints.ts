@@ -1,5 +1,5 @@
 import { api } from "..";
-import { MatchedLemma } from "../../types/lemma.types";
+import { type MatchedLemma } from "../../types/lemma.types";
 
 interface AnalyzeRequest {
   text: string;

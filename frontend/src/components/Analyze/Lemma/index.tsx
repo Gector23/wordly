@@ -1,6 +1,7 @@
-import { FC, memo } from "react";
-import { MatchedLemma } from "../../../types/lemma.types";
 import clsx from "clsx";
+import { type FC, memo } from "react";
+
+import { type MatchedLemma } from "../../../types/lemma.types";
 
 interface LemmaProps {
   word: string;

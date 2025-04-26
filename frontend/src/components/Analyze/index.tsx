@@ -1,6 +1,7 @@
 import { memo, useCallback, useMemo, useState } from "react";
-import Button from "../Button";
+
 import { useAnalyzeMutation } from "../../api/endpoints/analyzeEndpoints";
+import Button from "../Button";
 import Lemma from "./Lemma";
 
 const Analyze = () => {

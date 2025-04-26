@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { ButtonHTMLAttributes, FC, memo } from "react";
+import { type ButtonHTMLAttributes, type FC, memo } from "react";
 
 interface ButtonProps {
   className?: string;
