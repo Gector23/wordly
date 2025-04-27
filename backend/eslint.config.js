@@ -1,26 +1,27 @@
-import globals from "globals";
 import js from "@eslint/js";
-import tseslint from "typescript-eslint";
 import eslintConfigPrettier from "eslint-config-prettier/flat";
-import pluginJest from "eslint-plugin-jest";
 import importPlugin from "eslint-plugin-import";
+import pluginJest from "eslint-plugin-jest";
+import globals from "globals";
+import tseslint from "typescript-eslint";
 
-export default [
-  js.configs.recommended,
-  ...tseslint.configs.recommended,
-  importPlugin.flatConfigs.recommended,
-  importPlugin.flatConfigs.typescript,
-  eslintConfigPrettier,
+export default tseslint.config(
   {
-    files: ["src/**/*.ts", "tests/**/*.ts"],
+    ignores: ["dist"],
+  },
+  {
+    files: ["**/*.js", "**/*.ts"],
+    extends: [
+      js.configs.recommended,
+      ...tseslint.configs.recommended,
+      importPlugin.flatConfigs.recommended,
+      importPlugin.flatConfigs.typescript,
+      eslintConfigPrettier,
+    ],
     languageOptions: {
-      parser: tseslint.parser,
-      parserOptions: {
-        project: "./tsconfig.json",
-      },
+      ecmaVersion: "latest",
       globals: {
         ...globals.node,
-        ...globals.es2021,
       },
     },
     settings: {
@@ -68,7 +69,7 @@ export default [
     },
   },
   {
-    files: ["tests/**/*.test.ts"],
+    files: ["**/*.test.ts"],
     languageOptions: {
       globals: {
         ...globals.jest,
@@ -84,5 +85,5 @@ export default [
       "jest/prefer-to-have-length": "warn",
       "jest/valid-expect": "error",
     },
-  },
-];
+  }
+);
