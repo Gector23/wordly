@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "CommonJS",
+    "module": "NodeNext",
     "outDir": "./dist",
     "rootDir": "./",
     "baseUrl": "./",
@@ -13,11 +13,16 @@
       "#models/*": ["./src/models/*"],
       "#types/*": ["./src/types/*"]
     },
-    "strict": true,
+    "moduleResolution": "nodenext",
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
   },
   "include": ["src", "tests"],
   "exclude": ["node_modules", "dist"]
