@@ -1,10 +1,13 @@
+import { type WordTranslationModel } from "#models/word.model";
+
 export interface RawLemma {
   original: string;
-  value: string;
+  lemma: string;
+  isStopWord: boolean;
 }
 
-export interface MatchedLemma extends RawLemma {
+export interface ProcessedWord extends RawLemma {
   known: boolean;
-  translations?: string[];
+  translations?: WordTranslationModel[];
   addedAt?: Date;
 }

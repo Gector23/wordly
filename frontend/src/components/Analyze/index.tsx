@@ -2,29 +2,34 @@ import { memo, useCallback, useMemo, useState } from "react";
 
 import { useAnalyzeMutation } from "../../api/endpoints/analyzeEndpoints";
 import Button from "../Button";
-import Lemma from "./Lemma";
+import Word from "./Word";
+import Translations from "../Translations";
 
 const Analyze = () => {
   const [text, setText] = useState("");
   const [analyze, { data }] = useAnalyzeMutation();
 
-  const lemmas = useMemo(() => {
+  const words = useMemo(() => {
     if (!data) {
       return [];
     }
 
-    const matchedLemmasByOriginal = new Map(
-      data.matchedLemmas.map((lemma) => [lemma.original, lemma])
+    const processedWordsByOriginal = new Map(
+      data.processedWords.map((word) => [word.original, word])
     );
 
-    const words = text.split(" ").filter(Boolean);
+    const sentences = text.match(/[^.!?]+(?:[.!?]+|\s*$)/g) ?? [];
 
-    return words.map((word) => {
-      const matchedLemma = matchedLemmasByOriginal.get(word);
-      return {
-        word,
-        matchedLemma,
-      };
+    return sentences.flatMap((sentence) => {
+      const rawWords = sentence.split(" ").filter(Boolean);
+      return rawWords.map((rawWord) => {
+        const processedWord = processedWordsByOriginal.get(rawWord);
+        return {
+          rawWord,
+          sentence,
+          processedWord,
+        };
+      });
     });
   }, [text, data]);
 
@@ -49,11 +54,12 @@ const Analyze = () => {
           onChange={handleTextChange}
         />
         <div className="h-80 p-4 rounded-md bg-white overflow-y-auto flex flex-wrap content-start gap-x-1">
-          {lemmas.map(({ word, matchedLemma }, i) => (
-            <Lemma
-              key={`${word}-${i}`}
-              word={word}
-              matchedLemma={matchedLemma}
+          {words.map(({ rawWord, sentence, processedWord }, i) => (
+            <Word
+              key={`${rawWord}-${i}`}
+              rawWord={rawWord}
+              sentence={sentence}
+              processedWord={processedWord}
             />
           ))}
         </div>
@@ -61,6 +67,7 @@ const Analyze = () => {
       <Button className="ml-auto" onClick={handleAnalyze}>
         Analyze
       </Button>
+      <Translations />
     </>
   );
 };

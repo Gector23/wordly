@@ -1,12 +1,12 @@
 import { api } from "..";
-import { type MatchedLemma } from "../../types/lemma.types";
+import { type ProcessedWord } from "../../types/word.types";
 
 interface AnalyzeRequest {
   text: string;
 }
 
 interface AnalyzeResponse {
-  matchedLemmas: MatchedLemma[];
+  processedWords: ProcessedWord[];
 }
 
 const analyzeEndpoints = api.injectEndpoints({

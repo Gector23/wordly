@@ -3,16 +3,19 @@
 exports[`Lemma Processing Service getRawLemmasFromText should extract raw lemmas from capitalization 1`] = `
 [
   {
+    "isStopWord": false,
+    "lemma": "walk",
     "original": "WALK",
-    "value": "walk",
   },
   {
+    "isStopWord": false,
+    "lemma": "walk",
     "original": "walk",
-    "value": "walk",
   },
   {
+    "isStopWord": false,
+    "lemma": "walk",
     "original": "Walk",
-    "value": "walk",
   },
 ]
 `;
@@ -22,47 +25,114 @@ exports[`Lemma Processing Service getRawLemmasFromText should extract raw lemmas
 exports[`Lemma Processing Service getRawLemmasFromText should extract raw lemmas from mixed parts of speech 1`] = `
 [
   {
+    "isStopWord": true,
+    "lemma": "the",
+    "original": "The",
+  },
+  {
+    "isStopWord": false,
+    "lemma": "quick",
     "original": "quick",
-    "value": "quick",
   },
   {
+    "isStopWord": false,
+    "lemma": "brown",
     "original": "brown",
-    "value": "brown",
   },
   {
+    "isStopWord": false,
+    "lemma": "fox",
     "original": "fox",
-    "value": "fox",
   },
   {
+    "isStopWord": false,
+    "lemma": "jump",
     "original": "jumps",
-    "value": "jump",
   },
   {
+    "isStopWord": true,
+    "lemma": "over",
+    "original": "over",
+  },
+  {
+    "isStopWord": true,
+    "lemma": "the",
+    "original": "the",
+  },
+  {
+    "isStopWord": false,
+    "lemma": "lazy",
     "original": "lazy",
-    "value": "lazy",
   },
   {
+    "isStopWord": false,
+    "lemma": "dog",
     "original": "dog",
-    "value": "dog",
   },
 ]
 `;
 
-exports[`Lemma Processing Service getRawLemmasFromText should extract raw lemmas from only stopwords 1`] = `[]`;
+exports[`Lemma Processing Service getRawLemmasFromText should extract raw lemmas from only stopwords 1`] = `
+[
+  {
+    "isStopWord": true,
+    "lemma": "be",
+    "original": "Is",
+  },
+  {
+    "isStopWord": true,
+    "lemma": "it",
+    "original": "it",
+  },
+  {
+    "isStopWord": true,
+    "lemma": "be",
+    "original": "Am",
+  },
+  {
+    "isStopWord": true,
+    "lemma": "i",
+    "original": "I",
+  },
+  {
+    "isStopWord": true,
+    "lemma": "be",
+    "original": "Are",
+  },
+  {
+    "isStopWord": true,
+    "lemma": "you",
+    "original": "you",
+  },
+]
+`;
 
 exports[`Lemma Processing Service getRawLemmasFromText should extract raw lemmas from repeated words 1`] = `
 [
   {
+    "isStopWord": false,
+    "lemma": "cat",
     "original": "Cats",
-    "value": "cat",
   },
   {
-    "original": "cats",
-    "value": "cat",
+    "isStopWord": true,
+    "lemma": "and",
+    "original": "and",
   },
   {
+    "isStopWord": false,
+    "lemma": "cat",
     "original": "cats",
-    "value": "cat",
+  },
+  {
+    "isStopWord": true,
+    "lemma": "and",
+    "original": "and",
+  },
+  {
+    "isStopWord": false,
+    "lemma": "cat",
+    "original": "cats",
   },
 ]
 `;
@@ -70,12 +140,19 @@ exports[`Lemma Processing Service getRawLemmasFromText should extract raw lemmas
 exports[`Lemma Processing Service getRawLemmasFromText should extract raw lemmas from simple nouns 1`] = `
 [
   {
+    "isStopWord": false,
+    "lemma": "cat",
     "original": "Cats",
-    "value": "cat",
   },
   {
+    "isStopWord": true,
+    "lemma": "be",
+    "original": "are",
+  },
+  {
+    "isStopWord": false,
+    "lemma": "animal",
     "original": "animals",
-    "value": "animal",
   },
 ]
 `;
@@ -83,16 +160,34 @@ exports[`Lemma Processing Service getRawLemmasFromText should extract raw lemmas
 exports[`Lemma Processing Service getRawLemmasFromText should extract raw lemmas from verbs in different forms 1`] = `
 [
   {
+    "isStopWord": true,
+    "lemma": "he",
+    "original": "He",
+  },
+  {
+    "isStopWord": false,
+    "lemma": "play",
     "original": "played",
-    "value": "play",
   },
   {
+    "isStopWord": true,
+    "lemma": "and",
+    "original": "and",
+  },
+  {
+    "isStopWord": true,
+    "lemma": "be",
+    "original": "is",
+  },
+  {
+    "isStopWord": false,
+    "lemma": "play",
     "original": "playing",
-    "value": "play",
   },
   {
+    "isStopWord": false,
+    "lemma": "football",
     "original": "football",
-    "value": "football",
   },
 ]
 `;
@@ -101,28 +196,39 @@ exports[`Lemma Processing Service matchLemmas should match raw lemmas with known
 [
   {
     "addedAt": 2025-04-19T00:00:00.000Z,
+    "isStopWord": false,
     "known": true,
+    "lemma": "cat",
     "original": "Cats",
     "translations": [
-      "кот",
+      {
+        "original": "cat",
+        "sentence": "If I decide to have a pet, it will be a cat.",
+        "value": "кот",
+      },
     ],
-    "value": "cat",
   },
   {
     "addedAt": 2025-04-19T00:00:00.000Z,
+    "isStopWord": false,
     "known": true,
+    "lemma": "animal",
     "original": "animals",
     "translations": [
-      "животное",
+      {
+        "original": "animal",
+        "sentence": "An injured animal found a shelter.",
+        "value": "животное",
+      },
     ],
-    "value": "animal",
   },
   {
     "addedAt": undefined,
+    "isStopWord": false,
     "known": false,
+    "lemma": "play",
     "original": "played",
     "translations": undefined,
-    "value": "play",
   },
 ]
 `;

@@ -1,6 +1,8 @@
 import { describe, expect, it } from "@jest/globals";
 
+import { type WordModel } from "#models/word.model";
 import { getRawLemmasFromText, matchLemmas } from "#services/lemma.processing.service";
+import { type RawLemma } from "#types/lemma.types";
 
 describe("Lemma Processing Service", () => {
   describe("getRawLemmasFromText", () => {
@@ -21,19 +23,35 @@ describe("Lemma Processing Service", () => {
   });
 
   describe("matchLemmas", () => {
-    const rawLemmas = [
-      { original: "Cats", value: "cat" },
-      { original: "animals", value: "animal" },
-      { original: "played", value: "play" },
+    const rawLemmas: RawLemma[] = [
+      { original: "Cats", lemma: "cat", isStopWord: false },
+      { original: "animals", lemma: "animal", isStopWord: false },
+      { original: "played", lemma: "play", isStopWord: false },
     ];
 
-    const knownLemmas = [
-      { value: "cat", translations: ["кот"], addedAt: new Date("2025-04-19") },
-      { value: "animal", translations: ["животное"], addedAt: new Date("2025-04-19") },
+    const knownWords: WordModel[] = [
+      {
+        lemma: "cat",
+        translations: [
+          {
+            value: "кот",
+            original: "cat",
+            sentence: "If I decide to have a pet, it will be a cat.",
+          },
+        ],
+        addedAt: new Date("2025-04-19"),
+      },
+      {
+        lemma: "animal",
+        translations: [
+          { value: "животное", original: "animal", sentence: "An injured animal found a shelter." },
+        ],
+        addedAt: new Date("2025-04-19"),
+      },
     ];
 
     it("should match raw lemmas with known lemmas", () => {
-      const result = matchLemmas(rawLemmas, knownLemmas);
+      const result = matchLemmas(rawLemmas, knownWords);
       expect(result).toMatchSnapshot();
     });
   });
