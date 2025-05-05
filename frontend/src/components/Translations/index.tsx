@@ -39,12 +39,12 @@ const Translations = () => {
 
   return (
     <>
-      <div className="w-full rounded-md bg-white mt-4">
-        <div className="p-4 border-b-1 border-b-gray-200 flex justify-between items-center">
+      <div className="mt-4 w-full rounded-md bg-white">
+        <div className="flex items-center justify-between border-b-1 border-b-gray-200 p-4">
           <span>
             <span>Translations</span>
             {selectedWord && (
-              <span className="text-gray-500 ml-2">
+              <span className="ml-2 text-gray-500">
                 {selectedWord.original}
                 {selectedWord.original !== selectedWord.lemma && (
                   <span> ({selectedWord.lemma})</span>
@@ -62,7 +62,7 @@ const Translations = () => {
             <span>This word has no translations yet</span>
           )}
           {(selectedWord?.translations ?? []).map(translation => (
-            <div key={translation.value} className="flex justify-between items-center py-2">
+            <div key={translation.value} className="flex items-center justify-between py-2">
               <span>{translation.value}</span>
               <span className="text-gray-500">{translation.sentence}</span>
             </div>

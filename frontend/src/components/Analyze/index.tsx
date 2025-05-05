@@ -44,13 +44,13 @@ const Analyze = () => {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-4 mb-4">
+      <div className="mb-4 grid grid-cols-2 gap-4">
         <textarea
           placeholder="Enter the text to be analyzed"
-          className="h-80 block resize-none p-4 rounded-md bg-white"
+          className="block h-80 resize-none rounded-md bg-white p-4"
           onChange={handleTextChange}
         />
-        <div className="h-80 p-4 rounded-md bg-white overflow-y-auto flex flex-wrap content-start gap-x-1">
+        <div className="flex h-80 flex-wrap content-start gap-x-1 overflow-y-auto rounded-md bg-white p-4">
           {words.map(({ rawWord, sentence, processedWord }, i) => (
             <Word
               key={`${rawWord}-${i}`}

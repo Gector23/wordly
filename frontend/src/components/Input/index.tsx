@@ -9,7 +9,7 @@ const Input: FC<InputProps & InputHTMLAttributes<HTMLInputElement>> = ({ label, 
   return (
     <Field>
       {label && <Label>{label}</Label>}
-      <HeadlessInput className="w-full p-2 border" {...rest} />
+      <HeadlessInput className="w-full border p-2" {...rest} />
     </Field>
   );
 };
