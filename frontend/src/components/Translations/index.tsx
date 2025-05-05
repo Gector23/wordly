@@ -6,11 +6,10 @@ import AddTranslationModal from "./AddTranslationModal";
 import { useAddTranslationMutation } from "../../api/endpoints/wordEndpoints";
 
 const Translations = () => {
-  const [isAddTranslationModalOpen, setIsAddTranslationModalOpen] =
-    useState(false);
+  const [isAddTranslationModalOpen, setIsAddTranslationModalOpen] = useState(false);
   const [addTranslation] = useAddTranslationMutation();
 
-  const selectedWord = useAppSelector((state) => state.analyze.selectedWord);
+  const selectedWord = useAppSelector(state => state.analyze.selectedWord);
 
   const handleAddTranslationModalOpen = useCallback(() => {
     setIsAddTranslationModalOpen(true);
@@ -53,10 +52,7 @@ const Translations = () => {
               </span>
             )}
           </span>
-          <Button
-            disabled={!selectedWord}
-            onClick={handleAddTranslationModalOpen}
-          >
+          <Button disabled={!selectedWord} onClick={handleAddTranslationModalOpen}>
             Add translation
           </Button>
         </div>
@@ -65,11 +61,8 @@ const Translations = () => {
           {selectedWord && !selectedWord?.translations?.length && (
             <span>This word has no translations yet</span>
           )}
-          {(selectedWord?.translations ?? []).map((translation) => (
-            <div
-              key={translation.value}
-              className="flex justify-between items-center py-2"
-            >
+          {(selectedWord?.translations ?? []).map(translation => (
+            <div key={translation.value} className="flex justify-between items-center py-2">
               <span>{translation.value}</span>
               <span className="text-gray-500">{translation.sentence}</span>
             </div>

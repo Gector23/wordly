@@ -1,11 +1,4 @@
-import {
-  flip,
-  offset,
-  shift,
-  useFloating,
-  useInteractions,
-  useHover,
-} from "@floating-ui/react";
+import { flip, offset, shift, useFloating, useInteractions, useHover } from "@floating-ui/react";
 import { type FC, memo, useState } from "react";
 
 interface TooltipProps {
@@ -29,18 +22,11 @@ const Tooltip: FC<TooltipProps> = ({ children, content }) => {
 
   return (
     <>
-      <div
-        ref={refs.setReference}
-        {...getReferenceProps()}
-      >
+      <div ref={refs.setReference} {...getReferenceProps()}>
         {children}
       </div>
       {open && (
-        <div
-          ref={refs.setFloating}
-          {...getFloatingProps()}
-          style={{ ...floatingStyles }}
-        >
+        <div ref={refs.setFloating} {...getFloatingProps()} style={{ ...floatingStyles }}>
           {content}
         </div>
       )}

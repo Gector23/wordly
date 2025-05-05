@@ -10,9 +10,9 @@ interface AnalyzeResponse {
 }
 
 const analyzeEndpoints = api.injectEndpoints({
-  endpoints: (builder) => ({
+  endpoints: builder => ({
     analyze: builder.mutation<AnalyzeResponse, AnalyzeRequest>({
-      query: (body) => ({
+      query: body => ({
         url: "/analyze",
         method: "POST",
         body,

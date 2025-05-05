@@ -15,14 +15,14 @@ const Analyze = () => {
     }
 
     const processedWordsByOriginal = new Map(
-      data.processedWords.map((word) => [word.original, word])
+      data.processedWords.map(word => [word.original, word])
     );
 
     const sentences = text.match(/[^.!?]+(?:[.!?]+|\s*$)/g) ?? [];
 
-    return sentences.flatMap((sentence) => {
+    return sentences.flatMap(sentence => {
       const rawWords = sentence.split(" ").filter(Boolean);
-      return rawWords.map((rawWord) => {
+      return rawWords.map(rawWord => {
         const processedWord = processedWordsByOriginal.get(rawWord);
         return {
           rawWord,
@@ -33,13 +33,10 @@ const Analyze = () => {
     });
   }, [text, data]);
 
-  const handleTextChange = useCallback(
-    (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-      const text = e.target.value;
-      setText(text);
-    },
-    []
-  );
+  const handleTextChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const text = e.target.value;
+    setText(text);
+  }, []);
 
   const handleAnalyze = useCallback(async () => {
     await analyze({ text });

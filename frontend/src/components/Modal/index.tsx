@@ -1,9 +1,4 @@
-import {
-  Dialog,
-  DialogBackdrop,
-  DialogPanel,
-  DialogTitle,
-} from "@headlessui/react";
+import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from "@headlessui/react";
 import { type FC, memo } from "react";
 
 import Button from "../Button";
@@ -17,14 +12,7 @@ interface ModalProps {
   onConfirm: () => void;
 }
 
-const Modal: FC<ModalProps> = ({
-  children,
-  isOpen,
-  title,
-  confirmText,
-  onClose,
-  onConfirm,
-}) => {
+const Modal: FC<ModalProps> = ({ children, isOpen, title, confirmText, onClose, onConfirm }) => {
   return (
     <Dialog open={isOpen} onClose={onClose} className="relative">
       <DialogBackdrop className="fixed inset-0 bg-black/30" />

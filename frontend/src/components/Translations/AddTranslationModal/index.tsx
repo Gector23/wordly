@@ -27,12 +27,9 @@ const AddTranslationModal: FC<AddTranslationModalProps> = ({
     onClose();
   }, [translation, onTranslationAdd, onClose]);
 
-  const handleTranslationChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setTranslation(e.target.value);
-    },
-    []
-  );
+  const handleTranslationChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setTranslation(e.target.value);
+  }, []);
 
   return (
     <Modal
@@ -42,10 +39,7 @@ const AddTranslationModal: FC<AddTranslationModalProps> = ({
       onClose={handleClose}
       onConfirm={handleConfirm}
     >
-      <Input
-        placeholder="Enter a translation"
-        onChange={handleTranslationChange}
-      />
+      <Input placeholder="Enter a translation" onChange={handleTranslationChange} />
     </Modal>
   );
 };

@@ -5,10 +5,7 @@ interface InputProps {
   label?: string;
 }
 
-const Input: FC<InputProps & InputHTMLAttributes<HTMLInputElement>> = ({
-  label,
-  ...rest
-}) => {
+const Input: FC<InputProps & InputHTMLAttributes<HTMLInputElement>> = ({ label, ...rest }) => {
   return (
     <Field>
       {label && <Label>{label}</Label>}

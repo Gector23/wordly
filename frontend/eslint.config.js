@@ -4,6 +4,7 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import reacteslint from "eslint-plugin-react";
 import tseslint from "typescript-eslint";
+import eslintConfigPrettier from "eslint-config-prettier/flat";
 import importPlugin from "eslint-plugin-import";
 
 export default tseslint.config(
@@ -18,6 +19,7 @@ export default tseslint.config(
       reacteslint.configs.flat["jsx-runtime"],
       importPlugin.flatConfigs.recommended,
       importPlugin.flatConfigs.typescript,
+      eslintConfigPrettier,
     ],
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
@@ -44,12 +46,7 @@ export default tseslint.config(
       "import/order": [
         "error",
         {
-          groups: [
-            "builtin",
-            "external",
-            "internal",
-            ["parent", "sibling", "index"],
-          ],
+          groups: ["builtin", "external", "internal", ["parent", "sibling", "index"]],
           "newlines-between": "always",
           alphabetize: {
             order: "asc",

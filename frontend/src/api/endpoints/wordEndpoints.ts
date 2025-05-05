@@ -8,9 +8,9 @@ interface AnalyzeRequest {
 }
 
 const wordEndpoints = api.injectEndpoints({
-  endpoints: (builder) => ({
+  endpoints: builder => ({
     addTranslation: builder.mutation<void, AnalyzeRequest>({
-      query: (body) => ({
+      query: body => ({
         url: "/word/translation",
         method: "POST",
         body,
