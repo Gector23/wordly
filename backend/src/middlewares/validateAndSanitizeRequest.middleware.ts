@@ -2,7 +2,7 @@ import { type Request, type Response, type NextFunction } from "express";
 import { StatusCodes } from "http-status-codes";
 import { type ValidationError, type ObjectSchema } from "joi";
 
-interface ValidationSchemas {
+export interface ValidationSchemas {
   params?: ObjectSchema;
   query?: ObjectSchema;
   body?: ObjectSchema;
