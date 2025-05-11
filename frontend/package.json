@@ -15,6 +15,7 @@
     "@floating-ui/react": "^0.27.8",
     "@headlessui/react": "^2.2.2",
     "@reduxjs/toolkit": "^2.7.0",
+    "@wordly/shared": "file:../packages/shared",
     "clsx": "^2.1.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

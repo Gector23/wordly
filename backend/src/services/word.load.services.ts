@@ -1,9 +1,10 @@
-import Word from "#models/word.model";
-import { type RawLemma } from "#types/lemma.types";
+import { type RawLemma } from "@wordly/shared";
+
+import WordModel from "#models/word.model";
 
 export const loadWords = async (rawLemmas: RawLemma[]) => {
   try {
-    const words = await Word.find({
+    const words = await WordModel.find({
       lemma: { $in: rawLemmas.map(rawLemma => rawLemma.lemma) },
     }).lean();
     return words;

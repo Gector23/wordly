@@ -1,15 +1,10 @@
-import { api } from "..";
+import { type AddTranslationRequest } from "@wordly/shared";
 
-interface AnalyzeRequest {
-  lemma: string;
-  original: string;
-  translation: string;
-  sentence: string;
-}
+import { api } from "..";
 
 const wordEndpoints = api.injectEndpoints({
   endpoints: builder => ({
-    addTranslation: builder.mutation<void, AnalyzeRequest>({
+    addTranslation: builder.mutation<void, AddTranslationRequest>({
       query: body => ({
         url: "/word/translation",
         method: "POST",

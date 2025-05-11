@@ -1,9 +1,9 @@
+import { type ProcessedWord } from "@wordly/shared";
 import clsx from "clsx";
 import { type FC, memo, useCallback } from "react";
 
 import { useAppDispatch } from "../../../hooks/useAppDispatch";
 import { setSelectedWord } from "../../../store/slices/analyze";
-import { type ProcessedWord } from "../../../types/word.types";
 import Tooltip from "../../Tooltip";
 
 interface WordProps {

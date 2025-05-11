@@ -1,12 +1,7 @@
+import { type Word, type WordTranslation } from "@wordly/shared";
 import mongoose, { Schema } from "mongoose";
 
-export interface WordTranslationModel {
-  value: string;
-  original: string;
-  sentence: string;
-}
-
-const WordTranslationSchema = new Schema<WordTranslationModel>({
+const WordTranslationSchema = new Schema<WordTranslation>({
   value: {
     type: String,
     required: true,
@@ -21,13 +16,7 @@ const WordTranslationSchema = new Schema<WordTranslationModel>({
   },
 });
 
-export interface WordModel {
-  lemma: string;
-  translations: WordTranslationModel[];
-  addedAt: Date;
-}
-
-const WordSchema = new Schema<WordModel>({
+const WordSchema = new Schema<Word>({
   lemma: {
     type: String,
     required: true,
@@ -40,4 +29,4 @@ const WordSchema = new Schema<WordModel>({
   },
 });
 
-export default mongoose.model<WordModel>("Word", WordSchema);
+export default mongoose.model<Word>("Word", WordSchema);

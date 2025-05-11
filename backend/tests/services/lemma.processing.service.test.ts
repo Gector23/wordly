@@ -1,8 +1,7 @@
 import { describe, expect, it } from "@jest/globals";
+import { type RawLemma, type Word } from "@wordly/shared";
 
-import { type WordModel } from "#models/word.model";
 import { getRawLemmasFromText, matchLemmas } from "#services/lemma.processing.service";
-import { type RawLemma } from "#types/lemma.types";
 
 describe("Lemma Processing Service", () => {
   describe("getRawLemmasFromText", () => {
@@ -29,7 +28,7 @@ describe("Lemma Processing Service", () => {
       { original: "played", lemma: "play", isStopWord: false },
     ];
 
-    const knownWords: WordModel[] = [
+    const knownWords: Word[] = [
       {
         lemma: "cat",
         translations: [

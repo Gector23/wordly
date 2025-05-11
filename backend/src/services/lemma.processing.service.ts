@@ -1,8 +1,6 @@
+import { type ProcessedWord, type RawLemma, type Word } from "@wordly/shared";
 import nlp from "compromise";
 import { eng as stopList } from "stopword";
-
-import { type WordModel } from "#models/word.model";
-import { type ProcessedWord, type RawLemma } from "#types/lemma.types";
 
 export const getRawLemmasFromText = (text: string): RawLemma[] => {
   try {
@@ -27,7 +25,7 @@ export const getRawLemmasFromText = (text: string): RawLemma[] => {
   }
 };
 
-export const matchLemmas = (rawLemmas: RawLemma[], knownWords: WordModel[]): ProcessedWord[] => {
+export const matchLemmas = (rawLemmas: RawLemma[], knownWords: Word[]): ProcessedWord[] => {
   try {
     const knownWordsMap = new Map(knownWords.map(word => [word.lemma, word]));
 
