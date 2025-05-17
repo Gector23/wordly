@@ -1,6 +1,7 @@
 import { type Request, type Response, type NextFunction } from "express";
-import { StatusCodes } from "http-status-codes";
 import { type ValidationError, type ObjectSchema } from "joi";
+
+import { RequestValidationError } from "#errors/RequestValidationError";
 
 export interface ValidationSchemas {
   params?: ObjectSchema;
@@ -9,10 +10,10 @@ export interface ValidationSchemas {
 }
 
 export const validateAndSanitizeRequest = (schema: ValidationSchemas) => {
-  return (req: Request, res: Response, next: NextFunction) => {
+  return (req: Request, _res: Response, next: NextFunction) => {
     const validationErrors: ValidationError[] = [];
 
-    for (const key of ["body", "query", "params"] as const) {
+    for (const key of ["params", "query", "body"] as const) {
       if (schema[key]) {
         const { error, value } = schema[key].validate(req[key], {
           abortEarly: false,
@@ -30,10 +31,7 @@ export const validateAndSanitizeRequest = (schema: ValidationSchemas) => {
     }
 
     if (validationErrors.length > 0) {
-      res.status(StatusCodes.BAD_REQUEST).json({
-        message: "Request validation failed",
-        details: validationErrors,
-      });
+      next(new RequestValidationError(validationErrors));
       return;
     }
 

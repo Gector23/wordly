@@ -1,4 +1,5 @@
 import Word from "#models/word.model";
+import { wrapError } from "#utils/errors";
 
 export const addWordTranslation = async ({
   lemma,
@@ -29,8 +30,7 @@ export const addWordTranslation = async ({
         }
       );
     }
-  } catch (error) {
-    console.error(error);
-    throw new Error("Failed to add translation.");
+  } catch (err) {
+    throw wrapError("Failed to add translation.", err);
   }
 };

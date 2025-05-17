@@ -1,0 +1,6 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error utils cleanStack should clean the stack trace 1`] = `
+"Error: Test error
+    at Object.<anonymous> (src/utils/errors.ts:1:1)"
+`;

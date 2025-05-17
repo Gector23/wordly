@@ -2,6 +2,8 @@ import { type ProcessedWord, type RawLemma, type Word } from "@wordly/shared";
 import nlp from "compromise";
 import { eng as stopList } from "stopword";
 
+import { wrapError } from "#utils/errors";
+
 export const getRawLemmasFromText = (text: string): RawLemma[] => {
   try {
     const doc = nlp(text);
@@ -19,9 +21,8 @@ export const getRawLemmasFromText = (text: string): RawLemma[] => {
         isStopWord: stopList.includes(term.normal),
       };
     });
-  } catch (error) {
-    console.error(error);
-    throw new Error("Failed to extract lemmas from text.");
+  } catch (err) {
+    throw wrapError("Failed to extract lemmas from text.", err);
   }
 };
 
@@ -38,8 +39,7 @@ export const matchLemmas = (rawLemmas: RawLemma[], knownWords: Word[]): Processe
         addedAt: known?.addedAt,
       };
     });
-  } catch (error) {
-    console.error(error);
-    throw new Error("Failed to match lemmas.");
+  } catch (err) {
+    throw wrapError("Failed to match lemmas.", err);
   }
 };
