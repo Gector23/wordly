@@ -1,13 +1,20 @@
-import { memo, useCallback, useMemo, useState } from "react";
+import { useDebounce } from "ahooks";
+import { memo, useCallback, useEffect, useMemo, useState } from "react";
 
 import { useAnalyzeMutation } from "../../api/endpoints/analyzeEndpoints";
-import Button from "../Button";
-import Word from "./Word";
 import Translations from "../Translations";
+import Word from "./Word";
 
 const Analyze = () => {
   const [text, setText] = useState("");
+  const debouncedText = useDebounce(text, { wait: 500 });
   const [analyze, { data }] = useAnalyzeMutation();
+
+  useEffect(() => {
+    if (debouncedText) {
+      analyze({ text: debouncedText });
+    }
+  }, [debouncedText, analyze]);
 
   const words = useMemo(() => {
     if (!data) {
@@ -18,7 +25,7 @@ const Analyze = () => {
       data.processedWords.map(word => [word.original, word])
     );
 
-    const sentences = text.match(/[^.!?]+(?:[.!?]+|\s*$)/g) ?? [];
+    const sentences = debouncedText.match(/[^.!?]+(?:[.!?]+|\s*$)/g) ?? [];
 
     return sentences.flatMap(sentence => {
       const rawWords = sentence.split(" ").filter(Boolean);
@@ -31,16 +38,12 @@ const Analyze = () => {
         };
       });
     });
-  }, [text, data]);
+  }, [debouncedText, data]);
 
   const handleTextChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const text = e.target.value;
     setText(text);
   }, []);
-
-  const handleAnalyze = useCallback(async () => {
-    await analyze({ text });
-  }, [text, analyze]);
 
   return (
     <>
@@ -61,9 +64,6 @@ const Analyze = () => {
           ))}
         </div>
       </div>
-      <Button className="ml-auto" onClick={handleAnalyze}>
-        Analyze
-      </Button>
       <Translations />
     </>
   );

@@ -16,6 +16,7 @@
     "@headlessui/react": "^2.2.2",
     "@reduxjs/toolkit": "^2.7.0",
     "@wordly/shared": "file:../packages/shared",
+    "ahooks": "^3.8.5",
     "clsx": "^2.1.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
